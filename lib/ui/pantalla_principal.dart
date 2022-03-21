@@ -1,6 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/slider.dart';
+
 class PantallaPrincipal extends StatelessWidget {
 
   const PantallaPrincipal({Key? key}) : super(key: key);
@@ -19,7 +21,10 @@ class PantallaPrincipal extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: const [
-            CardSwiperWidget()
+            CardSwiperWidget(),
+            SliderWidget(titulo: 'Populares',),
+            SliderWidget(titulo: 'Series'),
+            SliderWidget(titulo: 'Peliculas'),
           ],
         ),
       )
@@ -39,7 +44,6 @@ class CardSwiperWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: size.height * 0.5,
-      color: Colors.red,
       child: Swiper(
         itemCount: 5,
         layout: SwiperLayout.STACK,
