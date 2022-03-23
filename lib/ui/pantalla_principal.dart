@@ -44,13 +44,14 @@ class CardSwiperWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: size.height * 0.5,
+      color: Colors.white,
       child: Swiper(
         itemCount: 5,
         layout: SwiperLayout.STACK,
         scrollDirection: Axis.horizontal,
         itemWidth: size.width * 0.6,
         itemHeight: size.height * 0.4,
-        itemBuilder: (_, int index){
+        itemBuilder: ( _ , int index){
           return GestureDetector(
             onTap: () => Navigator.pushNamed(context, 'detalles',arguments: 'pelicula'),
             child: ClipRRect(
