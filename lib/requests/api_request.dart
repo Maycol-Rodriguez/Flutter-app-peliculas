@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:info_cinema/model/map_respuesta_creditos.dart';
 import 'package:info_cinema/model/model.dart';
 
 class PeticionesProvider extends ChangeNotifier{
@@ -11,14 +12,17 @@ class PeticionesProvider extends ChangeNotifier{
   int paginaMejoresCalificadas = 0;
   int paginaProximosEstrenos = 0;
 
-  //Variables para almacenar las peticiones que recibimos
+
+  //*Variables para almacenar las peticiones que recibimos
   List<Peliculas> resolucionNowPlaying = [];
   List<Peliculas> resolucionPopulares  = [];
   List<Peliculas> resolucionTopRated   = [];
   List<Peliculas> resolucionUpcoming   = [];
+
+  Map<int, List<Casting>> resolucionCredits = {};
   
   PeticionesProvider(){
-    //colocar las peticiones
+    //Insertar las peticiones
     getPeliculasEstreno();
     getPeliculasPopulares();
     getPeliculasMejoresCalificadas();
@@ -61,6 +65,14 @@ class PeticionesProvider extends ChangeNotifier{
 
     resolucionUpcoming = respuestaUpcoming.results;
     notifyListeners();
+  }
+
+  Future<List<Casting>> getCreditosActores(int peliculaId) async {
+    final dataCredits = await _getDataJson('3/movie/$peliculaId/credits');
+    final respuestaCredits = Creditos.fromJson(dataCredits);
+
+    resolucionCredits[peliculaId] = respuestaCredits.cast;
+    return respuestaCredits.cast;
   }
 
   Future<String> _getDataJson(String endpoint,[int page = 1]) async {

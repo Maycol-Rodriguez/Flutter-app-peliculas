@@ -49,7 +49,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap:() =>  Navigator.pushNamed(context, 'detalles',arguments: 'pelicula'),
+                        onTap:() =>  Navigator.pushNamed(context, 'detalles',arguments: pelicula),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: FadeInImage(
