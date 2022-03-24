@@ -31,6 +31,24 @@ class PantallaDetalle extends StatelessWidget {
   }
 }
 
+BoxDecoration boxDecoration({double dx = 0, double dy = 0,double spreadRadius = 0,double blurRadius = 0}) {
+  return BoxDecoration(
+    // borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30)),
+    borderRadius: const BorderRadius.all(Radius.circular(30)),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black26,
+        spreadRadius: spreadRadius,
+        // spreadRadius: 2,
+        blurRadius: blurRadius,
+        // blurRadius: 5,
+        // offset: Offset(15, 10)
+        offset: Offset(dx, dy),
+      )
+    ],
+  );
+}
+
 
 //! Pelicula - Caratula
 class Caratula extends StatelessWidget {
@@ -49,9 +67,10 @@ class Caratula extends StatelessWidget {
 
     return Stack(
       children: [
-        SizedBox(
+        Container(
           width: double.infinity,
           height: size.height * 0.7,
+          decoration: boxDecoration(dx: 15, dy: 10, spreadRadius: 5,blurRadius: 20),
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(30),
@@ -73,6 +92,7 @@ class Caratula extends StatelessWidget {
     );
   }
 }
+
 
 
 //! Pelicula - Detalles(Overview)
@@ -205,19 +225,22 @@ class CastingImagen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
       width: 180,
       height: 250,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: FadeInImage(
-              image: NetworkImage(actor.getImgProfilePath),
-              placeholder: const AssetImage('assets/no-image.jpg'), 
-              width: 180,
-              height: 250,
-              fit: BoxFit.cover,
+          Container(
+            decoration: boxDecoration(dx: 1,dy: 2,spreadRadius: 3,blurRadius: 5),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: FadeInImage(
+                image: NetworkImage(actor.getImgProfilePath),
+                placeholder: const AssetImage('assets/no-image.jpg'), 
+                width: 180,
+                height: 250,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(height: 10),
