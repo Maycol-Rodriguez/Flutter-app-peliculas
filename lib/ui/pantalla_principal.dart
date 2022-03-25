@@ -27,9 +27,21 @@ class PantallaPrincipal extends StatelessWidget {
         child: Column(
           children: [
             CardSwiperWidget(peliculas: getPeliculas.resolucionNowPlaying),
-            SliderWidget(titulo: 'Populares'          ,peliculas: getPeliculas.resolucionPopulares),
-            SliderWidget(titulo: 'Proximos Estrenos'  ,peliculas: getPeliculas.resolucionUpcoming),
-            SliderWidget(titulo: 'Mejores Calificados',peliculas: getPeliculas.resolucionTopRated),
+            SliderWidget(
+              titulo: 'Populares'          ,
+              peliculas: getPeliculas.resolucionPopulares,
+              siguientePeticion: () => getPeliculas.getPeliculasPopulares(),
+            ),
+            SliderWidget(
+              titulo: 'Próximos Estrenos'  ,
+              peliculas: getPeliculas.resolucionUpcoming,
+              siguientePeticion: () => getPeliculas.getPeliculasProximosEstrenos(),
+            ),
+            SliderWidget(
+              titulo: 'Mejor Calificados',
+              peliculas: getPeliculas.resolucionTopRated,
+              siguientePeticion: () => getPeliculas.getPeliculasMejoresCalificadas(),
+            ),
           ],
         ),
       )
