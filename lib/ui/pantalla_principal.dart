@@ -1,9 +1,6 @@
-import 'package:info_cinema/requests/api_request.dart';
 import 'package:provider/provider.dart';
-
-import '../widgets/widgets.dart';
-
-// import 'package:info_cinema/widgets/widgets.dart';
+import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/widgets/widgets.dart';
 
 class PantallaPrincipal extends StatelessWidget {
 
@@ -15,10 +12,10 @@ class PantallaPrincipal extends StatelessWidget {
     final getPeliculas = Provider.of<PeticionesProvider>(context);
 
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text('Peliculas'),
         centerTitle: true,
-        leading: IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),
         actions: [
           IconButton(onPressed: (){}, icon: const Icon(Icons.search)),
         ],
