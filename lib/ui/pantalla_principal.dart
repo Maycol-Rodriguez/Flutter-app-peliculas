@@ -14,11 +14,9 @@ class PantallaPrincipal extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text('Peliculas'),
+        title: const Text('Películas'),
         centerTitle: true,
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search)),
-        ],
+        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search))],
       ),
       body: SingleChildScrollView(
         child: Column(

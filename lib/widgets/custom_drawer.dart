@@ -61,6 +61,7 @@ class Opciones extends StatelessWidget {
       height: 60,
       width: double.infinity,
       child:ListTile(
+        onTap: (){},
         leading: FaIcon(icono),
         trailing: const Icon(Icons.arrow_forward_ios_rounded,size: 15,),
         title: Text(
