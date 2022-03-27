@@ -88,7 +88,7 @@ class _SliderWidgetState extends State<SliderWidget> {
               physics: const BouncingScrollPhysics(),
               itemCount: widget.peliculas.length,
               scrollDirection: Axis.horizontal,
-              itemBuilder: ( _ ,int index) => ScrollHorizontal(pelicula: widget.peliculas[index]),
+              itemBuilder: ( _ ,int index) => ScrollHorizontal(pelicula: widget.peliculas[index], heroIds: '${widget.titulo}-$index-${widget.peliculas[index].id}'),
             )
           ),
         ],
@@ -98,15 +98,21 @@ class _SliderWidgetState extends State<SliderWidget> {
 }
 
 class ScrollHorizontal extends StatelessWidget {
-  const ScrollHorizontal({
-    Key? key,
-    required this.pelicula,
-  }) : super(key: key);
 
   final Peliculas pelicula;
+  final String heroIds;
+
+  const ScrollHorizontal({
+    Key? key,
+    required this.pelicula, 
+    required this.heroIds,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    pelicula.heroId = heroIds; 
+
     return Container(
       width: 150,
       height: 240,
@@ -118,14 +124,17 @@ class ScrollHorizontal extends StatelessWidget {
             onTap:() =>  Navigator.pushNamed(context, 'detalles',arguments: pelicula),
             child: Container(
               decoration: boxDecoration(),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: FadeInImage(
-                  placeholder: const AssetImage('assets/no-image.jpg'), 
-                  image: NetworkImage(pelicula.getImgPosterPath),
-                  fit: BoxFit.cover,
-                  height: 240,
-                  width: 150,
+              child: Hero(
+                tag: pelicula.heroId!,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: FadeInImage(
+                    placeholder: const AssetImage('assets/no-image.jpg'), 
+                    image: NetworkImage(pelicula.getImgPosterPath),
+                    fit: BoxFit.cover,
+                    height: 240,
+                    width: 150,
+                  ),
                 ),
               ),
             ),

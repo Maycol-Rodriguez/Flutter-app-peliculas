@@ -14,6 +14,7 @@ class PantallaPrincipal extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
+        backgroundColor: Colors.indigo.shade600,
         title: const Text('Películas'),
         centerTitle: true,
         actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search))],
@@ -23,12 +24,12 @@ class PantallaPrincipal extends StatelessWidget {
           children: [
             CardSwiperWidget(peliculas: getPeliculas.resolucionNowPlaying),
             SliderWidget(
-              titulo: 'Populares'          ,
+              titulo: 'Populares',
               peliculas: getPeliculas.resolucionPopulares,
               siguientePeticion: () => getPeliculas.getPeliculasPopulares(),
             ),
             SliderWidget(
-              titulo: 'Próximos Estrenos'  ,
+              titulo: 'Próximos Estrenos',
               peliculas: getPeliculas.resolucionUpcoming,
               siguientePeticion: () => getPeliculas.getPeliculasProximosEstrenos(),
             ),
