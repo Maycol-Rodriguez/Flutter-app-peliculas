@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:info_cinema/temas/temas.dart';
 import 'package:provider/provider.dart';
 import 'package:info_cinema/model/model.dart';
 import 'package:info_cinema/requests/api_request.dart';
@@ -11,8 +12,10 @@ class PantallaDetalle extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final Peliculas pelicula = ModalRoute.of(context)!.settings.arguments as Peliculas;
+    final getTemas = Provider.of<SwitchTemas>(context);
 
     return Scaffold(
+      backgroundColor: getTemas.temaOscuro ? Colors.grey[900] : Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
