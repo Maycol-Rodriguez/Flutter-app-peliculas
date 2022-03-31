@@ -149,8 +149,8 @@ class SwitchOpcion extends StatelessWidget {
         title: const Text(
           'Modo oscuro',
           style: TextStyle(
-          fontSize: 18, 
-          fontWeight: FontWeight.bold
+            fontSize: 18, 
+            fontWeight: FontWeight.bold
           )
         )
       ),
