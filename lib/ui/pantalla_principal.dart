@@ -1,3 +1,4 @@
+import 'package:info_cinema/temas/temas.dart';
 import 'package:provider/provider.dart';
 import 'package:info_cinema/requests/api_request.dart';
 import 'package:info_cinema/widgets/widgets.dart';
@@ -10,16 +11,20 @@ class PantallaPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final getPeliculas = Provider.of<PeticionesProvider>(context);
+    final getTemas = Provider.of<SwitchTemas>(context);
 
     return Scaffold(
+      backgroundColor: getTemas.temaOscuro ? Colors.grey[900] : Colors.white,
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        backgroundColor: Colors.indigo.shade600,
+        backgroundColor: getTemas.temaOscuro ? const Color(0xFF006FA7) : Colors.indigo.shade600,
         title: const Text('Películas'),
+        elevation: 0,
         centerTitle: true,
         actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search))],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             CardSwiperWidget(peliculas: getPeliculas.resolucionNowPlaying),
