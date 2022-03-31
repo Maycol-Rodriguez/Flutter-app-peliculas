@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         'principal':( _ ) => const PantallaPrincipal(),
         'detalles':( _ ) => const PantallaDetalle(),
       },
+    
       theme: getTemaActual,
     );
   }

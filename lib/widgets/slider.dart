@@ -116,7 +116,7 @@ class ScrollHorizontal extends StatelessWidget {
     return Container(
       width: 150,
       height: 240,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
          
       child: Column(
         children: [

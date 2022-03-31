@@ -12,7 +12,7 @@ class SwitchTemas with ChangeNotifier{
     _temaOscuro = value;
 
     (value) 
-        ? _temaActual = ThemeData.dark() 
+        ? _temaActual = ThemeData.dark()
         : _temaActual = ThemeData.light();
 
     notifyListeners();
