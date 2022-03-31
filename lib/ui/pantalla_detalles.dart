@@ -33,16 +33,12 @@ class PantallaDetalle extends StatelessWidget {
 
 BoxDecoration boxDecoration({double dx = 0, double dy = 0,double spreadRadius = 0,double blurRadius = 0}) {
   return BoxDecoration(
-    // borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30)),
     borderRadius: const BorderRadius.all(Radius.circular(30)),
     boxShadow: [
       BoxShadow(
         color: Colors.black26,
         spreadRadius: spreadRadius,
-        // spreadRadius: 2,
         blurRadius: blurRadius,
-        // blurRadius: 5,
-        // offset: Offset(15, 10)
         offset: Offset(dx, dy),
       )
     ],
