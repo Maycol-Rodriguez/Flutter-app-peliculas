@@ -1,9 +1,7 @@
-import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/temas/temas.dart';
 import 'package:provider/provider.dart';
-
-import '../widgets/widgets.dart';
-
-// import 'package:info_cinema/widgets/widgets.dart';
+import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/widgets/widgets.dart';
 
 class PantallaPrincipal extends StatelessWidget {
 
@@ -13,22 +11,38 @@ class PantallaPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final getPeliculas = Provider.of<PeticionesProvider>(context);
+    final getTemas = Provider.of<SwitchTemas>(context);
 
     return Scaffold(
+      backgroundColor: getTemas.temaOscuro ? Colors.grey[900] : Colors.white,
+      drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text('Series y Peliculas'),
+        backgroundColor: getTemas.temaOscuro ? const Color(0xFF006FA7) : Colors.indigo.shade600,
+        title: const Text('Películas'),
+        elevation: 0,
         centerTitle: true,
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search))
-        ],
+        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search))],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             CardSwiperWidget(peliculas: getPeliculas.resolucionNowPlaying),
-            SliderWidget(titulo: 'Populares'          ,peliculas: getPeliculas.resolucionPopulares),
-            SliderWidget(titulo: 'Proximos Estrenos'  ,peliculas: getPeliculas.resolucionUpcoming),
-            SliderWidget(titulo: 'Mejores Calificados',peliculas: getPeliculas.resolucionTopRated),
+            SliderWidget(
+              titulo: 'Populares',
+              peliculas: getPeliculas.resolucionPopulares,
+              siguientePeticion: () => getPeliculas.getPeliculasPopulares(),
+            ),
+            SliderWidget(
+              titulo: 'Próximos Estrenos',
+              peliculas: getPeliculas.resolucionUpcoming,
+              siguientePeticion: () => getPeliculas.getPeliculasProximosEstrenos(),
+            ),
+            SliderWidget(
+              titulo: 'Mejor Calificados',
+              peliculas: getPeliculas.resolucionTopRated,
+              siguientePeticion: () => getPeliculas.getPeliculasMejoresCalificadas(),
+            ),
           ],
         ),
       )

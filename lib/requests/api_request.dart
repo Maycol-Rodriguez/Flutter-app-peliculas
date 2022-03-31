@@ -1,5 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'package:info_cinema/model/map_respuesta_creditos.dart';
 import 'package:info_cinema/model/model.dart';
 
 class PeticionesProvider extends ChangeNotifier{
@@ -8,18 +7,11 @@ class PeticionesProvider extends ChangeNotifier{
   final _baseUrl = 'api.themoviedb.org';
   final _idioma  = 'es-ES';
 
-  int paginaPopular = 0;
-  int paginaMejoresCalificadas = 0;
-  int paginaProximosEstrenos = 0;
+  
 
 
-  //*Variables para almacenar las peticiones que recibimos
-  List<Peliculas> resolucionNowPlaying = [];
-  List<Peliculas> resolucionPopulares  = [];
-  List<Peliculas> resolucionTopRated   = [];
-  List<Peliculas> resolucionUpcoming   = [];
 
-  Map<int, List<Casting>> resolucionCredits = {};
+
   
   PeticionesProvider(){
     //Insertar las peticiones
@@ -29,13 +21,24 @@ class PeticionesProvider extends ChangeNotifier{
     getPeliculasProximosEstrenos();
   }
 
+  int paginaPopular = 0;
+  int paginaMejoresCalificadas = 0;
+  int paginaProximosEstrenos = 0;
+
+  //*Variables para almacenar las peticiones que recibimos
+  List<Peliculas> resolucionNowPlaying = [];
+  List<Peliculas> resolucionPopulares  = [];
+  List<Peliculas> resolucionTopRated   = [];
+  List<Peliculas> resolucionUpcoming   = [];
+
+  Map<int, List<Casting>> resolucionCredits = {};
 
   getPeliculasEstreno() async {
 
     final dataNowPlaying = await _getDataJson('3/movie/now_playing'); 
     final respuestaNowPlaying = UltimasPeliculas.fromJson(dataNowPlaying);
 
-    resolucionNowPlaying = respuestaNowPlaying.results;
+    resolucionNowPlaying = [...resolucionNowPlaying,...respuestaNowPlaying.results];
     notifyListeners();
   }
 
@@ -44,7 +47,7 @@ class PeticionesProvider extends ChangeNotifier{
     final dataPopular = await _getDataJson('3/movie/popular',paginaPopular);
     final respuestaPopular = PeliculasPopulares.fromJson(dataPopular);
 
-    resolucionPopulares = respuestaPopular.results;
+    resolucionPopulares = [...resolucionPopulares,...respuestaPopular.results];
     notifyListeners();
   }
 
@@ -54,7 +57,7 @@ class PeticionesProvider extends ChangeNotifier{
     final dataTopRated = await _getDataJson('3/movie/top_rated',paginaMejoresCalificadas);
     final respuestaTopRated = MejoresCalificados.fromJson(dataTopRated);
 
-    resolucionTopRated = respuestaTopRated.results;
+    resolucionTopRated = [...resolucionTopRated,...respuestaTopRated.results];
     notifyListeners();
   }
 
@@ -63,7 +66,7 @@ class PeticionesProvider extends ChangeNotifier{
     final dataUpcoming = await _getDataJson('3/movie/upcoming',paginaProximosEstrenos);
     final respuestaUpcoming = ProximosEstrenos.fromJson(dataUpcoming);
 
-    resolucionUpcoming = respuestaUpcoming.results;
+    resolucionUpcoming = [...resolucionUpcoming,...respuestaUpcoming.results];
     notifyListeners();
   }
 

@@ -65,17 +65,20 @@ class Caratula extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: size.height * 0.7,
+          height: size.height * 0.75,
           decoration: boxDecoration(dx: 15, dy: 10, spreadRadius: 5,blurRadius: 20),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30)
-            ),
-            child: FadeInImage(
-              image: NetworkImage(peliculas.getImgPosterPath),
-              placeholder: const AssetImage('assets/no-image.jpg'), 
-              fit: BoxFit.cover,
+          child: Hero(
+            tag: peliculas.heroId!,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30)
+              ),
+              child: FadeInImage(
+                image: NetworkImage(peliculas.getImgPosterPath),
+                placeholder: const AssetImage('assets/no-image.jpg'), 
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),

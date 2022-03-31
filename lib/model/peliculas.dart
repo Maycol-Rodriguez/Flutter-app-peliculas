@@ -32,6 +32,7 @@ class Peliculas {
   double voteAverage;
   int voteCount;
 
+  String? heroId;
 
   get getImgPosterPath{
     if( posterPath != null ) {

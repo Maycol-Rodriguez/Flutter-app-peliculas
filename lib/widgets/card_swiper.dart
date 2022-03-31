@@ -1,6 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:flutter/material.dart';
 import 'package:info_cinema/model/peliculas.dart';
+import 'package:info_cinema/widgets/widgets.dart';
 
 class CardSwiperWidget extends StatelessWidget {
 
@@ -28,29 +28,39 @@ class CardSwiperWidget extends StatelessWidget {
     }
 
     return Container(
+      margin: const EdgeInsets.symmetric(vertical: 30),
       width: double.infinity,
       height: size.height * 0.5,
-      color: Colors.white,
       child: Swiper(
-        itemCount: peliculas.length,
-        layout: SwiperLayout.STACK,
+        fade: 0.3,
+        scale: 0.4,
+        outer: true,
+        control: const SwiperControl(),
+        pagination: const SwiperPagination(),
+        viewportFraction: 0.6,
+        autoplayDisableOnInteraction: true,
         scrollDirection: Axis.horizontal,
-        itemWidth: size.width * 0.6,
+        itemCount: peliculas.length,
+        itemWidth: size.width * 0.8,
         itemHeight: size.height * 0.4,
         itemBuilder: ( _ , int index){
 
           final pelicula = peliculas[index];
+          pelicula.heroId = 'swiper-${pelicula.id}';
 
           return GestureDetector(
             onTap: () => Navigator.pushNamed(context, 'detalles',arguments: pelicula),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                image: NetworkImage(pelicula.getImgPosterPath),
-                height: 180,
-                width: 90, 
-                placeholder: const AssetImage('assets/no-image.jpg'),
-                fit: BoxFit.cover,
+            child: Hero(
+              tag: pelicula.heroId!,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: FadeInImage(
+                  placeholder: const AssetImage('assets/no-image.jpg'),
+                  image: NetworkImage(pelicula.getImgPosterPath),
+                  fit: BoxFit.cover,
+                  height: 180,
+                  width: 90, 
+                ),
               ),
             ),
           );
