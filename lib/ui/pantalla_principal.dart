@@ -1,6 +1,7 @@
+import 'package:info_cinema/busqueda/busqueda.dart';
 import 'package:info_cinema/temas/temas.dart';
 import 'package:provider/provider.dart';
-import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/peticiones/api_request.dart';
 import 'package:info_cinema/widgets/widgets.dart';
 
 class PantallaPrincipal extends StatelessWidget {
@@ -21,7 +22,12 @@ class PantallaPrincipal extends StatelessWidget {
         title: const Text('Películas'),
         elevation: 0,
         centerTitle: true,
-        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search))],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () => showSearch(context: context, delegate: BusquedaPeliculas())
+          )
+        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

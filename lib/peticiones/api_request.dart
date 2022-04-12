@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:info_cinema/model/map_respuesta_busqueda.dart';
 import 'package:info_cinema/model/model.dart';
 
 class PeticionesProvider extends ChangeNotifier{
@@ -7,12 +8,6 @@ class PeticionesProvider extends ChangeNotifier{
   final _baseUrl = 'api.themoviedb.org';
   final _idioma  = 'es-ES';
 
-  
-
-
-
-
-  
   PeticionesProvider(){
     //Insertar las peticiones
     getPeliculasEstreno();
@@ -34,7 +29,6 @@ class PeticionesProvider extends ChangeNotifier{
   Map<int, List<Casting>> resolucionCredits = {};
 
   getPeliculasEstreno() async {
-
     final dataNowPlaying = await _getDataJson('3/movie/now_playing'); 
     final respuestaNowPlaying = UltimasPeliculas.fromJson(dataNowPlaying);
 
@@ -52,7 +46,6 @@ class PeticionesProvider extends ChangeNotifier{
   }
 
   getPeliculasMejoresCalificadas() async {
-
     paginaMejoresCalificadas++;
     final dataTopRated = await _getDataJson('3/movie/top_rated',paginaMejoresCalificadas);
     final respuestaTopRated = MejoresCalificados.fromJson(dataTopRated);
@@ -78,6 +71,18 @@ class PeticionesProvider extends ChangeNotifier{
     return respuestaCredits.cast;
   }
 
+  Future<List<Peliculas>> getBuscarPeliculas(String query) async {
+    final url = Uri.https(_baseUrl, '3/search/movie', {
+      'api_key' : _apiKey,
+      'language' : _idioma,
+      'query': query,
+    });
+
+    final response = await http.get(url);
+    final respuestaSearch = Busqueda.fromJson(response.body);
+    return respuestaSearch.results;
+  }
+
   Future<String> _getDataJson(String endpoint,[int page = 1]) async {
     final url = Uri.https(_baseUrl, endpoint, {
       'api_key' : _apiKey,
@@ -88,5 +93,4 @@ class PeticionesProvider extends ChangeNotifier{
     final response = await http.get(url);
     return response.body;
   }
-
 }
