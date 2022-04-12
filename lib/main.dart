@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/peticiones/api_request.dart';
 import 'package:info_cinema/temas/temas.dart';
 import 'package:info_cinema/ui/screens.dart';
 

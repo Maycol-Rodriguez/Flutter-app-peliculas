@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:info_cinema/temas/temas.dart';
 import 'package:provider/provider.dart';
 import 'package:info_cinema/model/model.dart';
-import 'package:info_cinema/requests/api_request.dart';
+import 'package:info_cinema/peticiones/api_request.dart';
 
 class PantallaDetalle extends StatelessWidget {
 
@@ -18,6 +18,7 @@ class PantallaDetalle extends StatelessWidget {
       backgroundColor: getTemas.temaOscuro ? Colors.grey[900] : Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -127,7 +128,8 @@ class PeliculaDetalles extends StatelessWidget {
                     '${peliculas.voteAverage} - ${peliculas.releaseDate}', 
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.grey)
+                      color: Colors.grey
+                    )
                   ),
                 ],
               )
@@ -141,7 +143,7 @@ class PeliculaDetalles extends StatelessWidget {
             children: [
               const Text('Sinopsis',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
               const SizedBox(height: 10),
-              Text(peliculas.overview, textAlign: TextAlign.justify,style: const TextStyle(fontSize: 16),)
+              Text(peliculas.overview, textAlign: TextAlign.justify,style: const TextStyle(fontSize: 18),)
             ],
           ),
         ),
