@@ -1,4 +1,4 @@
-# app_peliculas
+# Flutter-app-peliculas
 
 A new Flutter project.
 
@@ -15,36 +15,27 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-![imagen](https://user-images.githubusercontent.com/91360243/160529590-0a17f7fe-e3e4-46e4-b40d-70e97da792e1.png)
 
 
-![imagen](https://user-images.githubusercontent.com/91360243/160529917-a12e387d-e4ae-4797-9c20-d2b5c948226e.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160530462-0a4aba2e-3d45-4dae-9fe1-c39d1aa5950b.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160530963-10bad61f-6bed-4a0a-a54f-e2c11503d376.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160531092-5f2d9751-ff8c-49ad-9291-ffbe6b1e2074.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160530747-f9f481b5-1141-4a6f-8a69-343f8fa1d842.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160531286-90b2856d-e074-4f3a-bd2a-e4bd78183d5b.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160531469-89eef3cd-d21b-4a84-880b-378a9a43b4db.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160531628-36b666e5-362c-46a1-a942-c2f282e634a2.png)
-
-
-![imagen](https://user-images.githubusercontent.com/91360243/160531695-2a6f764e-f8a0-4faf-bd19-8870dcb4e28b.png)
+![imagen](https://user-images.githubusercontent.com/91360243/163038367-35ca106a-7b16-44d5-8b03-885d465f7aa6.png)
 
 
 
+![imagen](https://user-images.githubusercontent.com/91360243/163038425-51f48ea6-f1b3-461a-96e0-1153122634a6.png)
 
+
+
+![imagen](https://user-images.githubusercontent.com/91360243/163038478-931fc621-2dec-4b8a-bb63-49dc0b08e91d.png)
+
+
+
+![imagen](https://user-images.githubusercontent.com/91360243/163038499-228864a3-119f-47e5-8e18-95e5d3f6d31d.png)
+
+
+
+![imagen](https://user-images.githubusercontent.com/91360243/163038517-77af968d-8f6b-4903-b68c-70bde794ec69.png)
+
+
+
+![imagen](https://user-images.githubusercontent.com/91360243/163038541-78dc5acc-0ce5-4a8e-9f5c-d8c3b8ea07b4.png)
 
